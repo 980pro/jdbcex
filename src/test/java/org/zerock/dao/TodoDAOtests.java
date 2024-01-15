@@ -28,4 +28,27 @@ public class TodoDAOtests {
         TodoVO todoVO = TodoVO.builder().title("Sample Title...").dueDate(LocalDate.of(2024,01,15)).build();
         todoDAO.insert(todoVO);
     }
+    @Test
+    public void testSelectOne() throws Exception {
+        Long tno = 1L;
+        TodoVO vo = todoDAO.SelectOne(tno);
+        System.out.println(vo);
+    }
+    @Test
+    public void testDeleteOne() throws Exception {
+        Long tno = 1L;
+        todoDAO.deleteOne(tno);
+    }
+    @Test
+    public void testUpdateOne() throws Exception {
+        TodoVO todoVO = TodoVO.builder()
+                .tno(2L)
+                .title("Update Sample Title...")
+                .dueDate(LocalDate.of(2024,01,15))
+                .finished(true)
+                .build();
+
+        todoDAO.updateOne(todoVO);
+
+    }
 }
